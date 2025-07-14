@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Ishtar Naturals{% endblock %}
+
+{% block description %}Get in touch with Ishtar Naturals. We're here to answer your questions about our natural bee-based skincare products and help you find the perfect solution.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="section-title">Contact Us</h1>
+                <p class="section-subtitle">
+                    We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h3 class="mb-4">Send us a Message</h3>
+                        
+                        <form method="post" id="contact-form">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="{{ form.name.id_for_label }}" class="form-label">Full Name *</label>
+                                    {{ form.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">Email Address *</label>
+                                    {{ form.email }}
+                                </div>
+                                <div class="col-12">
+                                    <label for="{{ form.subject.id_for_label }}" class="form-label">Subject *</label>
+                                    {{ form.subject }}
+                                </div>
+                                <div class="col-12">
+                                    <label for="{{ form.message.id_for_label }}" class="form-label">Message *</label>
+                                    {{ form.message }}
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <div class="h-100">
+                    <h3 class="mb-4">Get in Touch</h3>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5>Email</h5>
+                                    <p class="text-muted mb-0">info@ishtarnaturals.com</p>
+                                    <p class="text-muted">support@ishtarnaturals.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5>Phone</h5>
+                                    <p class="text-muted mb-0">+1 (555) 123-4567</p>
+                                    <p class="text-muted small">Mon-Fri 9AM-6PM EST</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h5>Address</h5>
+                                    <p class="text-muted mb-0">123 Innovation Drive<br>
+                                    Science Park, CA 94025<br>
+                                    United States</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h5>Business Hours</h5>
+                                    <p class="text-muted mb-1">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                    <p class="text-muted mb-1">Saturday: 10:00 AM - 4:00 PM</p>
+                                    <p class="text-muted mb-0">Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="social-media mt-4">
+                        <h5 class="mb-3">Follow Us</h5>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                                <i class="fab fa-facebook-f me-1"></i> Facebook
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                                <i class="fab fa-instagram me-1"></i> Instagram
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                                <i class="fab fa-twitter me-1"></i> Twitter
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                                <i class="fab fa-linkedin-in me-1"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="section-title text-center">Frequently Asked Questions</h2>
+                <p class="section-subtitle text-center">
+                    Find quick answers to common questions about our products and services.
+                </p>
+                
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                What makes your products different from other lip balms?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our products combine pure bee propolis with advanced nanotechnology to deliver superior healing, 
+                                long-lasting hydration, and anti-inflammatory benefits. Unlike conventional lip balms that provide 
+                                temporary relief, our formulation addresses the root causes of dry, chapped lips while promoting healing.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                Are your products suitable for sensitive skin?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, our products are formulated to be gentle and hypoallergenic. We use only natural ingredients 
+                                and avoid synthetic additives that commonly cause sensitivities. However, we recommend patch testing 
+                                if you have known allergies to bee products.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                How long does shipping take?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We offer fast and reliable shipping. Standard shipping typically takes 3-5 business days within 
+                                the United States. Express shipping options are available for faster delivery. International 
+                                shipping times vary by location.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                Do you offer a money-back guarantee?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, we stand behind our products with a 30-day money-back guarantee. If you're not completely 
+                                satisfied with your purchase, you can return it within 30 days for a full refund. Customer 
+                                satisfaction is our top priority.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                How should I store the products?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Store our products in a cool, dry place away from direct sunlight. Room temperature storage 
+                                is ideal. Avoid leaving products in hot cars or direct sunlight for extended periods, as this 
+                                may affect the texture and consistency.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section (Optional) -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="section-title text-center">Visit Our Location</h2>
+                <div class="map-container bg-light rounded" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
+                        <h4 class="text-muted">Interactive Map</h4>
+                        <p class="text-muted">123 Innovation Drive, Science Park, CA 94025</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline-primary">
+                            <i class="fas fa-external-link-alt me-1"></i> View on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.contact-item h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.accordion-button {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--cream);
+    color: var(--primary-color);
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(218, 165, 32, 0.25);
+}
+</style>
+{% endblock %}
+

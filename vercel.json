@@ -1,13 +1,13 @@
 {
     "builds": [{
-        "src": "ishtar_naturals/wsgi.py",
+        "src": "ISHTAR_NATURALS/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.8" }
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "ishtar_naturals/wsgi.py"
+            "dest": "ISHTAR_NATURALS/wsgi.py"
         }
     ]
 }

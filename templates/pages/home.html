@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ishtar Naturals - Premium Bee-Based Skincare Products{% endblock %}
+
+{% block description %}Discover Ishtar Naturals' revolutionary bee-based skincare products. Our natural lip balm and deodorant combine propolis with nanotechnology for superior healing, protection, and long-lasting results.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="hero-title">Nature's Healing Power, Enhanced by Science</h1>
+                    <p class="hero-subtitle">
+                        Experience the revolutionary combination of pure bee propolis and advanced nanotechnology 
+                        in our premium skincare products. Designed for lasting hydration, healing, and protection.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="{% url 'products:product_list' %}" class="btn btn-primary btn-lg me-3">Shop Now</a>
+                        <a href="{% url 'pages:science' %}" class="btn btn-outline-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <img src="{% static 'images/hero-product.png' %}" alt="Ishtar Naturals Products" class="img-fluid" style="max-width: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem Statement Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">The Problem We Solve</h2>
+                <p class="section-subtitle">
+                    42% of people suffer from dry, chapped lips, yet most lip balms provide only temporary relief. 
+                    Current products often contain synthetic ingredients and fail to deliver long-lasting hydration and healing.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="feature-title">Temporary Relief</h4>
+                    <p class="feature-text">Most users apply lip balm multiple times daily without lasting results</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-tint-slash"></i>
+                    </div>
+                    <h4 class="feature-title">Poor Hydration</h4>
+                    <p class="feature-text">50% of lip balms fail to provide effective, long-lasting moisture</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h4 class="feature-title">Synthetic Ingredients</h4>
+                    <p class="feature-text">Many products contain artificial chemicals that can cause sensitivities</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h4 class="feature-title">Overpriced</h4>
+                    <p class="feature-text">Premium natural products often come with premium prices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Our Revolutionary Products</h2>
+                <p class="section-subtitle">
+                    Discover our scientifically-formulated, bee-based skincare products that deliver 
+                    superior results through the perfect blend of nature and technology.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for product in featured_products %}
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                        {% else %}
+                            <img src="{% static 'images/product-placeholder.png' %}" alt="{{ product.name }}" class="img-fluid">
+                        {% endif %}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <div class="product-price">${{ product.price }}</div>
+                        <p class="product-description">{{ product.short_description }}</p>
+                        <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Default products if none are featured -->
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'images/lip-balm-hero.png' %}" alt="Natural Lip Balm" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Lip Balm</h3>
+                        <div class="product-price">$24.99</div>
+                        <p class="product-description">Revolutionary bee-based lip balm with propolis and nanotechnology for superior healing and long-lasting hydration.</p>
+                        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'images/deodorant-hero.png' %}" alt="Natural Deodorant" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Natural Deodorant</h3>
+                        <div class="product-price">$19.99</div>
+                        <p class="product-description">Advanced natural deodorant enhanced with bee-derived ingredients and nanotechnology for all-day protection.</p>
+                        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'images/skincare-set.png' %}" alt="Skincare Set" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Complete Care Set</h3>
+                        <div class="product-price">$39.99</div>
+                        <p class="product-description">Complete skincare solution combining our premium lip balm and natural deodorant for comprehensive care.</p>
+                        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'products:product_list' %}" class="btn btn-outline-primary btn-lg">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Why Choose Ishtar Naturals?</h2>
+                <p class="section-subtitle">
+                    Our unique approach combines the healing power of bee propolis with cutting-edge 
+                    nanotechnology to deliver unparalleled results.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="feature-title">100% Natural</h4>
+                    <p class="feature-text">Pure bee propolis, shea butter, coconut oil, and jojoba oil - no synthetic additives or harmful chemicals.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h4 class="feature-title">Advanced Science</h4>
+                    <p class="feature-text">Nanotechnology enhancement maximizes ingredient absorption and effectiveness for superior results.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="feature-title">Healing Properties</h4>
+                    <p class="feature-text">Anti-inflammatory, antimicrobial, and antioxidant benefits promote healing and skin health.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="feature-title">Long-Lasting</h4>
+                    <p class="feature-text">Extended hydration and protection that lasts throughout the day, reducing the need for frequent reapplication.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Gentle & Safe</h4>
+                    <p class="feature-text">Hypoallergenic formulation suitable for sensitive skin, reducing the risk of irritation and allergic reactions.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4 class="feature-title">Expert Formulated</h4>
+                    <p class="feature-text">Developed by PhD scientists with expertise in theoretical physics and advanced material science.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Ready to Experience the Difference?</h2>
+                <p class="section-subtitle">
+                    Join thousands of satisfied customers who have discovered the power of nature enhanced by science. 
+                    Try our products risk-free today.
+                </p>
+                <div class="mt-4">
+                    <a href="{% url 'products:product_list' %}" class="btn btn-primary btn-lg me-3">Shop Now</a>
+                    <a href="{% url 'pages:contact' %}" class="btn btn-outline-primary btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products - Ishtar Naturals{% endblock %}
+
+{% block description %}Explore our complete range of premium bee-based skincare products. Natural lip balm and deodorant enhanced with propolis and nanotechnology.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="section-title">Our Products</h1>
+                <p class="section-subtitle">
+                    Discover our scientifically-formulated, bee-based skincare products that deliver 
+                    superior results through the perfect blend of nature and technology.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="section">
+    <div class="container">
+        <!-- Category Filter -->
+        {% if categories %}
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="text-center">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary filter-btn active" data-filter="all">All Products</button>
+                        {% for category in categories %}
+                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="{{ category.name|lower }}">{{ category.name }}</button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Products Grid -->
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card" data-category="{{ product.category.name|lower }}">
+                    <div class="product-image">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                        {% else %}
+                            <img src="{% static 'images/product-placeholder.png' %}" alt="{{ product.name }}" class="img-fluid">
+                        {% endif %}
+                        
+                        {% if product.is_featured %}
+                        <div class="position-absolute top-0 start-0 m-3">
+                            <span class="badge bg-primary">Featured</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <div class="product-price">${{ product.price }}</div>
+                        <p class="product-description">{{ product.short_description }}</p>
+                        
+                        <!-- Key Benefits -->
+                        <div class="product-benefits mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-leaf text-success me-1"></i> 100% Natural
+                                <i class="fas fa-microscope text-primary me-1 ms-2"></i> Nanotechnology
+                                <i class="fas fa-heart text-danger me-1 ms-2"></i> Healing
+                            </small>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <a href="{{ product.get_absolute_url }}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Default products if database is empty -->
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card" data-category="lip-care">
+                    <div class="product-image">
+                        <img src="{% static 'images/lip-balm-hero.png' %}" alt="Premium Lip Balm" class="img-fluid">
+                        <div class="position-absolute top-0 start-0 m-3">
+                            <span class="badge bg-primary">Featured</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Lip Balm</h3>
+                        <div class="product-price">$24.99</div>
+                        <p class="product-description">Revolutionary bee-based lip balm with propolis and nanotechnology for superior healing and long-lasting hydration.</p>
+                        
+                        <div class="product-benefits mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-leaf text-success me-1"></i> 100% Natural
+                                <i class="fas fa-microscope text-primary me-1 ms-2"></i> Nanotechnology
+                                <i class="fas fa-heart text-danger me-1 ms-2"></i> Healing
+                            </small>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card" data-category="deodorant">
+                    <div class="product-image">
+                        <img src="{% static 'images/deodorant-hero.png' %}" alt="Natural Deodorant" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Natural Deodorant</h3>
+                        <div class="product-price">$19.99</div>
+                        <p class="product-description">Advanced natural deodorant enhanced with bee-derived ingredients and nanotechnology for all-day protection.</p>
+                        
+                        <div class="product-benefits mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-leaf text-success me-1"></i> 100% Natural
+                                <i class="fas fa-microscope text-primary me-1 ms-2"></i> Nanotechnology
+                                <i class="fas fa-shield-alt text-info me-1 ms-2"></i> Protection
+                            </small>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card" data-category="bundle">
+                    <div class="product-image">
+                        <img src="{% static 'images/skincare-set.png' %}" alt="Complete Care Set" class="img-fluid">
+                        <div class="position-absolute top-0 end-0 m-3">
+                            <span class="badge bg-success">Save 20%</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Complete Care Set</h3>
+                        <div class="product-price">
+                            <span class="text-decoration-line-through text-muted me-2">$44.98</span>
+                            $35.99
+                        </div>
+                        <p class="product-description">Complete skincare solution combining our premium lip balm and natural deodorant for comprehensive care.</p>
+                        
+                        <div class="product-benefits mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-gift text-warning me-1"></i> Bundle Deal
+                                <i class="fas fa-star text-warning me-1 ms-2"></i> Best Value
+                                <i class="fas fa-heart text-danger me-1 ms-2"></i> Complete Care
+                            </small>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <nav aria-label="Products pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Why Choose Our Products?</h2>
+                <p class="section-subtitle">
+                    Every product is carefully formulated by our team of scientists to deliver 
+                    maximum effectiveness while maintaining complete safety and natural purity.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4 class="feature-title">Quality Guaranteed</h4>
+                    <p class="feature-text">Rigorous testing and quality control ensure every product meets our high standards.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h4 class="feature-title">Fast Shipping</h4>
+                    <p class="feature-text">Quick and secure delivery to your doorstep with tracking information provided.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h4 class="feature-title">30-Day Returns</h4>
+                    <p class="feature-text">Not satisfied? Return any product within 30 days for a full refund.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="feature-title">Expert Support</h4>
+                    <p class="feature-text">Our knowledgeable team is here to help with any questions or concerns.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
