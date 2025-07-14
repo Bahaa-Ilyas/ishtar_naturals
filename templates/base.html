@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ishtar Naturals - Natural Bee-Based Skincare{% endblock %}</title>
+    <meta name="description" content="{% block description %}Discover Ishtar Naturals' premium bee-based skincare products. Natural lip balm and deodorant enhanced with propolis and nanotechnology for superior healing and protection.{% endblock %}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'pages:home' %}">
+                <span class="brand-text"><i class="fas fa-leaf me-2"></i>𒈹 Ishtar Naturals</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pages:home' %}">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'products:product_list' %}" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-shopping-bag me-1"></i>Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="{% url 'products:product_list' %}">
+                                <i class="fas fa-th-large me-2"></i>All Products
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'products:category' 'lip-balm' %}">
+                                <i class="fas fa-kiss me-2"></i>Lip Balm
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:category' 'deodorant' %}">
+                                <i class="fas fa-spray-can me-2"></i>Deodorant
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:category' 'bundles' %}">
+                                <i class="fas fa-gift me-2"></i>Product Bundles
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'pages:about' %}" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-users me-1"></i>About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="{% url 'pages:about' %}">
+                                <i class="fas fa-building me-2"></i>Our Company
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:team' %}">
+                                <i class="fas fa-user-friends me-2"></i>Our Team
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:mission' %}">
+                                <i class="fas fa-bullseye me-2"></i>Mission & Vision
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:sustainability' %}">
+                                <i class="fas fa-seedling me-2"></i>Sustainability
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'pages:science' %}" id="scienceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-flask me-1"></i>Science
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="scienceDropdown">
+                            <li><a class="dropdown-item" href="{% url 'pages:science' %}">
+                                <i class="fas fa-microscope me-2"></i>Research & Technology
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:ingredients' %}">
+                                <i class="fas fa-leaf me-2"></i>Natural Ingredients
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:clinical_studies' %}">
+                                <i class="fas fa-chart-line me-2"></i>Clinical Studies
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:certifications' %}">
+                                <i class="fas fa-certificate me-2"></i>Certifications
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'pages:contact' %}" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-envelope me-1"></i>Contact
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="{% url 'pages:contact' %}">
+                                <i class="fas fa-phone me-2"></i>Get In Touch
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:support' %}">
+                                <i class="fas fa-life-ring me-2"></i>Customer Support
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:faq' %}">
+                                <i class="fas fa-question-circle me-2"></i>FAQ
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'pages:store_locator' %}">
+                                <i class="fas fa-map-marker-alt me-2"></i>Store Locator
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user me-1"></i>{{ user.first_name|default:user.username }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">
+                                        <i class="fas fa-user-circle me-2"></i>My Profile
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">
+                                        <i class="fas fa-key me-2"></i>Change Password
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                    </a></li>
+                                </ul>
+                            </div>
+                        {% else %}
+                            <a class="nav-link btn btn-outline-primary ms-2 px-3" href="{% url 'accounts:login' %}">
+                                <i class="fas fa-user me-1"></i>Login
+                            </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% if messages %}
+            <div class="container mt-4 pt-5">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="brand-text">𒈹 Ishtar Naturals</h5>
+                    <p class="text-muted">Premium bee-based skincare products enhanced with nanotechnology for superior healing and protection.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Products</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'products:product_list' %}" class="text-muted">All Products</a></li>
+                        <li><a href="#" class="text-muted">Lip Balm</a></li>
+                        <li><a href="#" class="text-muted">Deodorant</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'pages:about' %}" class="text-muted">About Us</a></li>
+                        <li><a href="{% url 'pages:science' %}" class="text-muted">Science</a></li>
+                        <li><a href="{% url 'pages:contact' %}" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">FAQ</a></li>
+                        <li><a href="{% url 'pages:privacy_policy' %}" class="text-muted">Privacy Policy</a></li>
+                        <li><a href="{% url 'pages:terms_of_service' %}" class="text-muted">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Newsletter</h6>
+                    <p class="text-muted small">Subscribe for updates and special offers</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control form-control-sm" placeholder="Your email">
+                            <button class="btn btn-primary btn-sm" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted small mb-0">&copy; 2024 Ishtar Naturals. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted small mb-0">Made with natural ingredients and scientific innovation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+
