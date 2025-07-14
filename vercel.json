@@ -1,13 +1,5 @@
 {
-    "builds": [{
-        "src": "ISHTAR_NATURALS/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "ISHTAR_NATURALS/wsgi.py"
-        }
-    ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "source": "/feedback/((?!general).*)",
+  "destination": "/api/feedback/general"
 }
