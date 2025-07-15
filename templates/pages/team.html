@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Team - Ishtar Naturals{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Meet Our Team</h2>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title">Meet Our Expert Team</h2>
+                        <p class="section-subtitle">
+                            Our diverse team combines expertise in physics, engineering, and business
+                            to deliver innovative solutions that make a real difference.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    {% for member in team_members %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-member">
+                            {% if member.image %}
+                                <img src="{{ member.image.url }}" alt="{{ member.name }}" class="team-photo">
+                            {% else %}
+                                <div class="team-photo d-flex align-items-center justify-content-center bg-light">
+                                    <i class="fas fa-user fa-3x text-muted"></i>
+                                </div>
+                            {% endif %}
+                            <h4 class="team-name">{{ member.name }}</h4>
+                            <p class="team-title">{{ member.title }}</p>
+                            <p class="team-bio">{{ member.bio }}</p>
+                            {% if member.linkedin_url %}
+                            <a href="{{ member.linkedin_url }}" class="btn btn-outline-primary btn-sm" target="_blank">
+                                <i class="fab fa-linkedin-in me-1"></i> LinkedIn
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                    <!-- Default team members -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-member">
+                            <div class="team-photo d-flex align-items-center justify-content-center bg-light">
+                                <i class="fas fa-user fa-3x text-muted"></i>
+                            </div>
+                            <h4 class="team-name">Dr. Bahaa Ilyas</h4>
+                            <p class="team-title">PhD in Theoretical Physics | Product Development/Formulation Specialist</p>
+                            <p class="team-bio">
+                                Leading our research and development efforts, Dr. Ilyas brings deep scientific expertise
+                                to create revolutionary formulations that maximize the therapeutic potential of natural ingredients.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-member">
+                            <div class="team-photo d-flex align-items-center justify-content-center bg-light">
+                                <i class="fas fa-user fa-3x text-muted"></i>
+                            </div>
+                            <h4 class="team-name">Awas Faedi</h4>
+                            <p class="team-title">Engineering | Marketing, Branding, Research and Evaluation</p>
+                            <p class="team-bio">
+                                Combining engineering precision with marketing insight, Awas ensures our products
+                                meet the highest technical standards while effectively reaching customers who need them most.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-member">
+                            <div class="team-photo d-flex align-items-center justify-content-center bg-light">
+                                <i class="fas fa-user fa-3x text-muted"></i>
+                            </div>
+                            <h4 class="team-name">Roza Qaidi</h4>
+                            <p class="team-title">LLM in Human Rights | Operations and Logistics Specialist</p>
+                            <p class="team-bio">
+                                With expertise in operations and a commitment to ethical practices, Roza ensures
+                                our supply chain operates efficiently while maintaining our values of sustainability and fairness.
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <div class="row">
+            {% for member in team_members %}
+            <div class="col-md-4 mb-4">
+                <div class="card team-card h-100 text-center">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}" class="card-img-top rounded-circle mx-auto mt-3" alt="{{ member.name }}" style="width: 150px; height: 150px; object-fit: cover;">
+                    {% else %}
+                    <img src="{% static 'images/default-avatar.png' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Default Avatar" style="width: 150px; height: 150px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ member.name }}</h5>
+                        <p class="card-text text-muted">{{ member.title }}</p>
+                        <p class="card-text">{{ member.bio }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

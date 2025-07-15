@@ -13,7 +13,7 @@
             <div class="col-lg-8 mx-auto text-center">
                 <h1 class="section-title">Our Products</h1>
                 <p class="section-subtitle">
-                    Discover our scientifically-formulated, bee-based skincare products that deliver 
+                    Discover our scientifically-formulated, bee-based skincare products that deliver
                     superior results through the perfect blend of nature and technology.
                 </p>
             </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
         {% endif %}
-        
+
         <!-- Products Grid -->
         <div class="row g-4">
             {% for product in products %}
@@ -51,7 +51,7 @@
                         {% else %}
                             <img src="{% static 'images/product-placeholder.png' %}" alt="{{ product.name }}" class="img-fluid">
                         {% endif %}
-                        
+
                         {% if product.is_featured %}
                         <div class="position-absolute top-0 start-0 m-3">
                             <span class="badge bg-primary">Featured</span>
@@ -62,7 +62,7 @@
                         <h3 class="product-title">{{ product.name }}</h3>
                         <div class="product-price">${{ product.price }}</div>
                         <p class="product-description">{{ product.short_description }}</p>
-                        
+
                         <!-- Key Benefits -->
                         <div class="product-benefits mb-3">
                             <small class="text-muted">
@@ -71,7 +71,7 @@
                                 <i class="fas fa-heart text-danger me-1 ms-2"></i> Healing
                             </small>
                         </div>
-                        
+
                         <div class="d-grid gap-2">
                             <a href="{{ product.get_absolute_url }}" class="btn btn-primary">View Details</a>
                         </div>
@@ -90,9 +90,9 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Premium Lip Balm</h3>
-                        <div class="product-price">$9.99</div>
+                        <div class="product-price"> $ 9.99 </div>
                         <p class="product-description">Revolutionary bee-based lip balm with propolis and nanotechnology for superior healing and long-lasting hydration.</p>
-                        
+
                         <div class="product-benefits mb-3">
                             <small class="text-muted">
                                 <i class="fas fa-leaf text-success me-1"></i> 100% Natural
@@ -100,14 +100,14 @@
                                 <i class="fas fa-heart text-danger me-1 ms-2"></i> Healing
                             </small>
                         </div>
-                        
+
                         <div class="d-grid gap-2">
                             <a href="#" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 col-md-6">
                 <div class="product-card" data-category="deodorant">
                     <div class="product-image">
@@ -117,7 +117,7 @@
                         <h3 class="product-title">Natural Deodorant</h3>
                         <div class="product-price">$14.99</div>
                         <p class="product-description">Advanced natural deodorant enhanced with bee-derived ingredients and nanotechnology for all-day protection.</p>
-                        
+
                         <div class="product-benefits mb-3">
                             <small class="text-muted">
                                 <i class="fas fa-leaf text-success me-1"></i> 100% Natural
@@ -125,14 +125,14 @@
                                 <i class="fas fa-shield-alt text-info me-1 ms-2"></i> Protection
                             </small>
                         </div>
-                        
+
                         <div class="d-grid gap-2">
                             <a href="#" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 col-md-6">
                 <div class="product-card" data-category="bundle">
                     <div class="product-image">
@@ -148,7 +148,7 @@
                             $20.99
                         </div>
                         <p class="product-description">Complete skincare solution combining our premium lip balm and natural deodorant for comprehensive care.</p>
-                        
+
                         <div class="product-benefits mb-3">
                             <small class="text-muted">
                                 <i class="fas fa-gift text-warning me-1"></i> Bundle Deal
@@ -156,7 +156,7 @@
                                 <i class="fas fa-heart text-danger me-1 ms-2"></i> Complete Care
                             </small>
                         </div>
-                        
+
                         <div class="d-grid gap-2">
                             <a href="#" class="btn btn-primary">View Details</a>
                         </div>
@@ -165,7 +165,7 @@
             </div>
             {% endfor %}
         </div>
-        
+
         <!-- Pagination -->
         {% if is_paginated %}
         <div class="row mt-5">
@@ -177,7 +177,7 @@
                                 <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                             </li>
                         {% endif %}
-                        
+
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
                                 <li class="page-item active">
@@ -189,7 +189,7 @@
                                 </li>
                             {% endif %}
                         {% endfor %}
-                        
+
                         {% if page_obj.has_next %}
                             <li class="page-item">
                                 <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
@@ -210,12 +210,12 @@
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="section-title">Why Choose Our Products?</h2>
                 <p class="section-subtitle">
-                    Every product is carefully formulated by our team of scientists to deliver 
+                    Every product is carefully formulated by our team of scientists to deliver
                     maximum effectiveness while maintaining complete safety and natural purity.
                 </p>
             </div>
         </div>
-        
+
         <div class="row g-4">
             <div class="col-lg-3 col-md-6">
                 <div class="text-center">
@@ -257,4 +257,3 @@
     </div>
 </section>
 {% endblock %}
-
