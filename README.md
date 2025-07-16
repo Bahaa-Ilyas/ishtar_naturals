@@ -1,4 +1,4 @@
-# Ishtar Naturals Website
+# Ishtar Naturals Website (TESTER Website) : https://ishtar-naturals-deploy.vercel.app/
 
 A professional Django-based website for Ishtar Naturals, featuring premium bee-based skincare products enhanced with nanotechnology. This website showcases the company's innovative lip balm and deodorant products with a beautiful yellow-brown color scheme inspired by natural honey and bee products.
 
