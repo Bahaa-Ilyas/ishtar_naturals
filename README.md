@@ -204,20 +204,6 @@ DATABASE_URL=sqlite:///db.sqlite3
 - Secure headers configuration
 - User input validation and sanitization
 
-## 📞 Support
-
-### Getting Help
-- **Documentation**: Check this README and inline comments
-- **Issues**: Create GitHub issues for bugs or feature requests
-- **Email**: support@ishtarnaturals.com
-
-### Contact Information
-- **Website**: https://ishtarnaturals.com
-- **GitHub**: https://github.com/yourusername/ishtar-naturals-website
-
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
